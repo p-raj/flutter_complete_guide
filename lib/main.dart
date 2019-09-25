@@ -5,20 +5,22 @@ void main() => runApp(App());
 class App extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return AppState();
+    return _AppState();
   }
 }
 
-class AppState extends State<App> {
+class _AppState extends State<App> {
+
+  // indexer
+  int _qindex = 0;
+
   // functions for the class
   void answerQuestions() {
     setState(() {
-      qindex += 1;
+      // re-render the widget
+      _qindex += 1;
     });
   }
-
-  // indexer
-  int qindex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class AppState extends State<App> {
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          Text(q.elementAt(qindex)),
+          Text(q.elementAt(_qindex)),
           RaisedButton(
             child: Text('Submit'),
             onPressed: () => this.answerQuestions(),
