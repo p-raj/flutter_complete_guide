@@ -31,7 +31,7 @@ class _AppState extends State<App> {
 
   // functions for the class
   void answerQuestions() {
-    if (_qindex < qa.length-1) {
+    if (_qindex < qa.length) {
       setState(() {
         // re-render the widget
         _qindex += 1;
@@ -47,14 +47,14 @@ class _AppState extends State<App> {
         // initialized
         home: Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: _qindex < qa.length ? Column(
         children: <Widget>[
           Question(qa.elementAt(_qindex)['q']),
           ...(qa.elementAt(_qindex)['a'] as List<String>).map((a) {
             return Answer(a, answerQuestions);
           }).toList(),
         ],
-      ),
+      ): Text('Done'),
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text('Hello'),
