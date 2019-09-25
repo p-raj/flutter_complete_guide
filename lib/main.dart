@@ -1,8 +1,8 @@
 // packages
 import 'package:flutter/material.dart';
 // app related
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(App());
 
@@ -15,7 +15,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   //List<Map<String, List<String>>>
-  final qa = const [
+  final _qa = const [
     {
       'q': 'What\'s your favorite color?',
       'a': ['White', 'Black', 'Red', 'Blue']
@@ -30,8 +30,8 @@ class _AppState extends State<App> {
   int _qindex = 0;
 
   // functions for the class
-  void answerQuestions() {
-    if (_qindex < qa.length) {
+  void _answerQuestions() {
+    if (_qindex < _qa.length) {
       setState(() {
         // re-render the widget
         _qindex += 1;
@@ -47,14 +47,9 @@ class _AppState extends State<App> {
         // initialized
         home: Scaffold(
       backgroundColor: Colors.white,
-      body: _qindex < qa.length ? Column(
-        children: <Widget>[
-          Question(qa.elementAt(_qindex)['q']),
-          ...(qa.elementAt(_qindex)['a'] as List<String>).map((a) {
-            return Answer(a, answerQuestions);
-          }).toList(),
-        ],
-      ): Text('Done'),
+      body: _qindex < _qa.length
+          ? Quiz(_qa, _answerQuestions, _qindex)
+          : Result(),
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text('Hello'),
