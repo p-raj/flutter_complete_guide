@@ -1,4 +1,7 @@
+// packages
 import 'package:flutter/material.dart';
+// app related
+import './question.dart';
 
 void main() => runApp(App());
 
@@ -35,7 +38,7 @@ class _AppState extends State<App> {
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          Text(q.elementAt(_qindex)),
+          Question(q.elementAt(_qindex)),
           RaisedButton(
             child: Text('Submit'),
             onPressed: () => this.answerQuestions(),
