@@ -28,7 +28,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     //List<Map<String, List<String>>> 
-    var qa = [
+    var qa = const [
       {
         'q': 'What\'s your favorite color?',
         'a': ['White', 'Black', 'Red', 'Blue']
