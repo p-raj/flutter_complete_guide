@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 // app related
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(App());
 
@@ -13,7 +14,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-
   // indexer
   int _qindex = 0;
 
@@ -39,10 +39,7 @@ class _AppState extends State<App> {
       body: Column(
         children: <Widget>[
           Question(q.elementAt(_qindex)),
-          RaisedButton(
-            child: Text('Submit'),
-            onPressed: () => this.answerQuestions(),
-          )
+          Answer('Submit', this.answerQuestions),
         ],
       ),
       appBar: AppBar(
