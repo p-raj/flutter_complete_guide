@@ -27,8 +27,17 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> q;
-    q = ['Hello', 'World'];
+    //List<Map<String, List<String>>> 
+    var qa = [
+      {
+        'q': 'What\'s your favorite color?',
+        'a': ['White', 'Black', 'Red', 'Blue']
+      },
+      {
+        'q': 'What\'s your favorite animal?',
+        'a': ['Rabbit', 'Snake', 'Elephant', 'Lion']
+      },
+    ];
 
     return MaterialApp(
         // core widget that would be
@@ -38,8 +47,15 @@ class _AppState extends State<App> {
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          Question(q.elementAt(_qindex)),
-          Answer('Submit', this.answerQuestions),
+          Question(
+            qa.elementAt(_qindex)['q']
+          ),
+          ...(qa.elementAt(_qindex)['a'] as List<String>)
+          .map(
+            (a) {
+              return Answer(a, answerQuestions);
+            })
+          .toList(),
         ],
       ),
       appBar: AppBar(
