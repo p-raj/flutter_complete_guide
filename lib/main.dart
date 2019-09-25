@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 void main() => runApp(App());
 
 class App extends StatelessWidget {
+
+  // functions for the class
+  void answerQuestions() {
+    print('Answer chosen');
+  }
+
   @override
   Widget build(BuildContext context) {
     List<String> q;
@@ -20,7 +26,7 @@ class App extends StatelessWidget {
           Text(q[1]),
           RaisedButton(
             child: Text('Submit'),
-            onPressed: null,
+            onPressed: () =>this.answerQuestions(),
           )
         ],
       ),
